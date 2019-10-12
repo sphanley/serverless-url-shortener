@@ -45,6 +45,7 @@ public static async Task<HttpResponseMessage> Run(HttpRequestMessage req, NextId
 
     var result = new List<Result>();
     var url = input.Input;
+    var shortCode = input.ShortCode;
     bool tagMediums = input.TagMediums.HasValue ? input.TagMediums.Value : true;
     bool tagSource = (input.TagSource.HasValue ? input.TagSource.Value : true) || tagMediums;
 
@@ -99,7 +100,7 @@ public static async Task<HttpResponseMessage> Run(HttpRequestMessage req, NextId
     }
     else 
     {
-        var shortUrl = Encode(keyTable.Id++);
+        var shortUrl = shortCode ?? Encode(keyTable.Id++);
         log.Info($"Short URL for {url} is {shortUrl}");
         var newUrl = new ShortUrl 
         {

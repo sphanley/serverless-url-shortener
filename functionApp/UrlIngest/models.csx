@@ -16,6 +16,7 @@ public class Request
     public bool? TagSource { get; set; }
     public bool? TagMediums { get; set; }
     public string Input { get; set; }
+    public string ShortCode { get; set; }
 }
 
 public class Result 
